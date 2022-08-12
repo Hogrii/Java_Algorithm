@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Second_letterCase {
+public class Ex02 {
 	public static String solution(String str) {
 		String answer = "";
 		
