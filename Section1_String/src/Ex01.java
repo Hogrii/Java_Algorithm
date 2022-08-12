@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class First_FindString {
+public class Ex01 {
 	public static int solution(String str, char c) {
 		int cnt = 0;
 		
