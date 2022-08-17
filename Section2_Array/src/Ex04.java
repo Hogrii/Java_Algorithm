@@ -5,10 +5,12 @@ public class Ex04 {
 		int[] answer = new int[account];
 		answer[0] = answer[1] = 1;
 		
+		// 피보나치 수열
 		for(int i=2; i<account; i++) {
 			answer[i] = answer[i-2] + answer[i-1];
 		}
 		
+		// 출력
 		return answer;
 	}
 	
@@ -18,6 +20,7 @@ public class Ex04 {
 		// 입력이 7이면 1 1 2 3 5 8 13
 		Scanner sc = new Scanner(System.in);
 		
+		// 항의 개수
 		int account = sc.nextInt();
 		
 		for(int answer : solution(account)) {
