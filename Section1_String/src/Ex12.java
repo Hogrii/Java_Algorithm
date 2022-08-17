@@ -13,8 +13,7 @@ public class Ex12 {
 			String pw = str.substring(0, 7);
 			
 			// pw를 0과 1로 정리한다.
-			pw = pw.replace("#", "1");
-			pw = pw.replace("*", "0");
+			pw = pw.replace("#", "1").replace("*", "0");
 			
 			// pw : string -> binary -> decimal
 			int decimal = Integer.parseInt(pw, 2);
