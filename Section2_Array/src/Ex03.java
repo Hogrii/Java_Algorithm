@@ -5,9 +5,9 @@ public class Ex03 {
 		String answer = "";
 		
 		// 가위바위보
-		if((buildA[round]==1 && buildB[round]==2) || (buildA[round]==2 && buildB[round]==3) || (buildA[round]==3 && buildB[round]==1)) answer = "B";
+		if(buildA[round]==buildB[round]) answer = "D";
 		else if((buildA[round]==1 && buildB[round]==3) || (buildA[round]==2 && buildB[round]==1) || (buildA[round]==3 && buildB[round]==2)) answer = "A";
-		else answer = "D";
+		else answer = "B";
 		
 		// 출력
 		return answer;
