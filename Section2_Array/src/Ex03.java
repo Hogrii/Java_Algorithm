@@ -4,10 +4,12 @@ public class Ex03 {
 	public static String solution(int round, int[] buildA, int[] buildB) {
 		String answer = "";
 		
+		// 가위바위보
 		if((buildA[round]==1 && buildB[round]==2) || (buildA[round]==2 && buildB[round]==3) || (buildA[round]==3 && buildB[round]==1)) answer = "B";
 		else if((buildA[round]==1 && buildB[round]==3) || (buildA[round]==2 && buildB[round]==1) || (buildA[round]==3 && buildB[round]==2)) answer = "A";
 		else answer = "D";
 		
+		// 출력
 		return answer;
 	}
 	
@@ -21,18 +23,22 @@ public class Ex03 {
 		int N = sc.nextInt();
 		int round = 0;
 		
+		// A가 낼거
 		int[] buildA = new int[N];
 		for(int i=0; i<buildA.length; i++) {
 			buildA[i] = sc.nextInt();
 		}
 		
+		// B가 낼거
 		int[] buildB = new int[N];
 		for(int i=0; i<buildB.length; i++) {
 			buildB[i] = sc.nextInt();
 		}
 		
+		// 출력
 		for(int i=0; i<N; i++) {
 			System.out.println(solution(round, buildA, buildB));
+			// 이번판이 끝나면 다음판 진행
 			round++;
 		}
 	}
