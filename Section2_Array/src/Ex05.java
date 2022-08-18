@@ -4,11 +4,13 @@ public class Ex05 {
 	public static int solution(int N) {
 		int answer = 0;
 		
-		boolean[] prime = new boolean[N+1];
+		// 2~N까지 배열 생성
+		boolean[] notPrime = new boolean[N+1];
+		// 2~N까지 소수이면 false, 소수가 아니면 true
 		for(int i=2; i<N; i++) {
-			if(prime[i]==false) {
+			if(notPrime[i]==false) {
 				answer++;
-				for(int j=i; j<=N; j=j+i) prime[j]=true;
+				for(int j=i; j<=N; j=j+i) notPrime[j]=true;
 			}
 		}
 		
@@ -22,6 +24,7 @@ public class Ex05 {
 		// 입력은 2 이상을 입력한다.
 		Scanner sc = new Scanner(System.in);
 		
+		// 입력
 		int N = sc.nextInt();
 		System.out.println(solution(N));
 	}
