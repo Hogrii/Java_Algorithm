@@ -5,22 +5,29 @@ public class Ex12 {
 		int answer = 0;
 		int mentotiRel = 0;
 		
+		// 1번 학생부터 비교 시작
 		for(int i=1; i<=N; i++) {
+			// 1번 학생부터 비교 대상
 			for(int j=1; j<=N; j++) {
 				int mentotiCnt = 0;
 				for(int k=0; k<M; k++) {
 					int mento = 0, menti = 0;
 					for(int l=0; l<N; l++) {
+						// mathRank[k][l]의 학생이 i번 학생이라면 mento에 순위(l)을 저장
 						if(mathRank[k][l]==i) mento = l;
+						// mathRank[k][l]의 학생이 j번 학생이라면 menti에 순위(l)을 저장
 						if(mathRank[k][l]==j) menti = l;
 					}
+					// 만약 menti가 mento보다 순위가 낮다면 mento-menti 카운트를 +1
 					if(mento<menti) mentotiCnt++; 
 				}
+				// i번 학생으로부터 mento-menti 관계가 M번(수학테스트 횟수)만큼 쌓였다면 관계 형성
 				if(mentotiCnt == M) mentotiRel++;
 			}
 		}
 		answer = mentotiRel;
 		
+		// 출력
 		return answer;
 	}
 	
