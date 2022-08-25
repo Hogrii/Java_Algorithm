@@ -23,17 +23,22 @@ public class Ex03 {
 		// 풀이 2
 		int sumSales = 0;
 		
+		// 1~K일간 매출 합
 		for(int i=0; i<K; i++) {
 			sumSales += sales[i];
 		}
+		// 최대 매출을 1~K일의 합으로 초기화
 		maxSales = sumSales;
 		
 		for(int i=K; i<sales.length; i++) {
+			// 현재 합계에 다음날을 추가, K일전 매출을 제거
 			sumSales += sales[i] - sales[i-K];
+			// 최대 매출 비교 후 최대 매출 값 갱신
 			maxSales = Math.max(maxSales, sumSales);
 		}
 		answer = maxSales;
 		
+		// 출력
 		return answer;
 	}
 	
