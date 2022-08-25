@@ -8,16 +8,23 @@ public class Ex04 {
 		int minIndex = 0;
 		
 		for(int i=0; i<arr.length; i++) {
+			// i번째까지 더한다
 			sum += arr[i];
+			// 합이 특정숫자 M과 같다면 +1
 			if(sum == M) cnt++;
+			// 합이 특정숫자 M보다 높을 때
 			while(sum>=M) {
+				// 합으로 구성되어 있는 맨 앞의 수열을 제거
 				sum -= arr[minIndex];
+				// 맨 앞의 수열인덱스 갱신
 				minIndex++;
+				// 합이 특정숫자 M과 같아졌다면 +1
 				if(sum==M) cnt++;
 			}
 		}
 		answer = cnt;
 		
+		// 출력
 		return answer;
 	}
 	
