@@ -6,9 +6,12 @@ public class Ex01 {
 		ArrayList<Integer> answer = new ArrayList<>();
 		int lengthA = 0, lengthB = 0;
 		
-		while(lengthA<N && lengthB<M) { // 32
+		// 각 배열의 인덱스가 배열의 길이보다 작을 때
+		while(lengthA<N && lengthB<M) {
+			// 첫번째 인덱스부터 서로 비교
 			if(A[lengthA]<B[lengthB]) {
 				answer.add(A[lengthA]);
+				// 비교 후 인덱스 증가
 				lengthA++;
 			}else {
 				answer.add(B[lengthB]);
@@ -16,9 +19,11 @@ public class Ex01 {
 			}
 		}
 		
+		// 위의 반복문이 끝난 후 입력되지 않은 배열 입력
 		while(lengthA<N) answer.add(A[lengthA++]);
 		while(lengthB<M) answer.add(B[lengthB++]);
 		
+		// 출력
 		return answer;
 	}
 	public static void main(String[] args) {
