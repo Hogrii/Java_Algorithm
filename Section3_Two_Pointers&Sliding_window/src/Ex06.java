@@ -7,15 +7,21 @@ public class Ex06 {
 		int lt = 0;
 		
 		for(int rt=0; rt<arr.length; rt++) {
+			// 0이 나오면 K번만큼 1로 바꿀 수 있기 때문에 일단 진행
 			if(arr[rt]==0) cnt++;
+			// 만약 0을 1로 바꾼 횟수가 K보다 많아질 경우
 			while(cnt>K) {
+				// arr[0]부터 0이 나오는 지점을 조회
+				// 조회 후 0이 확인되면 0을 1로 바꾼 횟수를 차감
 				if(arr[lt]==0) cnt--;
+				// 인덱스 0부터 시작해서 0값을 찾기 위한 값
 				lt++;
 			}
+			// 현재 최대 길이보다 더 긴 부분이 나오면 갱신
 			answer = Math.max(answer, rt-lt+1);
 		}
-
 		
+		// 출력
 		return answer;
 	}
 	
