@@ -36,14 +36,17 @@ public class Ex05 {
 		for(int i=0; i<arr.length; i++) {
 			for(int j=i+1; j<arr.length; j++) {
 				for(int l=j+1; l<arr.length; l++) {
+					// ArrayList sumRank에 세 수의 합이 중복되지 않으면 입력
 					if(!sumRank.contains(arr[i]+arr[j]+arr[l])) {
 						sumRank.add(arr[i]+arr[j]+arr[l]);
 					}
 				}
 			}
 		}
+		// sumRank를 내림차순으로 정렬
 		Collections.sort(sumRank, Collections.reverseOrder());
 		
+		// sumRank에 저장된 수를 큰 순서대로 번호 매기기
 		int rank = 1;		
 		for(int key : sumRank) {
 			arrMap.put(key, rank);
@@ -51,11 +54,15 @@ public class Ex05 {
 		}
 		
 		for(int key : arrMap.keySet()) {
+			// key에 해당하는 value를 value 변수에 저장
 			int value = arrMap.get(key);
+			// value가 만약 K와 같다면 해당 value의 key를 출력한다.
 			if(value == K) answer = key;
 		}
+		// 만약 K번째 수가 존재하지 않으면 -1을 출력
 		if(answer == 0) answer = -1;
 		
+		// 출력
 		return answer;
 	}
 
