@@ -1,19 +1,23 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
-import java.util.TreeSet;
 
 public class Ex05 {
-	public static int solution(int[] arr) {
+	public static int solution(int K, int[] arr) {
 		int answer = 0;
+		/*
+		// TreeSet 사용
 		// TreeSet은 HashSet과 동일하게 중복 데이터를 저장하지 않고 저장 순서를 유지하지 않는다.
 		// HashSet과의 차이점은 이진 탐색 트리 구조로 되어있다는 점이다.
 		// Collections.reverseOrder()를 넣으면 내림차순으로 자동정렬된다.
 		TreeSet<Integer> Tset = new TreeSet<>(Collections.reverseOrder());
-		
+
 		for(int i=0; i<arr.length; i++) {
 			for(int j=i+1; j<arr.length; j++) {
 				for(int l=j+1; l<arr.length; l++) {
-					// set 자료구조에 추가
+					// treeSet 자료구조에 추가
 					Tset.add(arr[i]+arr[j]+arr[l]);
 				}
 			}
@@ -23,10 +27,38 @@ public class Ex05 {
 			cnt++;
 			System.out.println(cnt + " ~ " + x);
 		}
+		 */
+
+		// HashMap 사용
+		HashMap<Integer, Integer> arrMap = new HashMap<>();
+		ArrayList<Integer> sumRank = new ArrayList<>();
+
+		for(int i=0; i<arr.length; i++) {
+			for(int j=i+1; j<arr.length; j++) {
+				for(int l=j+1; l<arr.length; l++) {
+					if(!sumRank.contains(arr[i]+arr[j]+arr[l])) {
+						sumRank.add(arr[i]+arr[j]+arr[l]);
+					}
+				}
+			}
+		}
+		Collections.sort(sumRank, Collections.reverseOrder());
+		
+		int rank = 1;		
+		for(int key : sumRank) {
+			arrMap.put(key, rank);
+			rank++;
+		}
+		
+		for(int key : arrMap.keySet()) {
+			int value = arrMap.get(key);
+			if(value == K) answer = key;
+		}
+		if(answer == 0) answer = -1;
 		
 		return answer;
 	}
-	
+
 	public static void main(String[] args) {
 		// K번째 큰 수
 		// 1~100 사이의 자연수가 적힌 카드 N장
@@ -40,6 +72,6 @@ public class Ex05 {
 		for(int i=0; i<arr.length; i++) {
 			arr[i] = sc.nextInt();
 		}
-		System.out.println(solution(arr));
+		System.out.println(solution(K, arr));
 	}
 }
