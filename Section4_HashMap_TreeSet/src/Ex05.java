@@ -5,6 +5,8 @@ import java.util.TreeSet;
 public class Ex05 {
 	public static int solution(int[] arr) {
 		int answer = 0;
+		// TreeSet은 HashSet과 동일하게 중복 데이터를 저장하지 않고 저장 순서를 유지하지 않는다.
+		// HashSet과의 차이점은 이진 탐색 트리 구조로 되어있다는 점이다.
 		// Collections.reverseOrder()를 넣으면 내림차순으로 자동정렬된다.
 		TreeSet<Integer> Tset = new TreeSet<>(Collections.reverseOrder());
 		
