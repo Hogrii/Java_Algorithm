@@ -1,24 +1,77 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Ex03 {
+	public int solution(int n, int k, int[] sales) {
+		int sum = 0;
+		
+		// 1~k일 매출 합
+		for(int i=0; i<k; i++) sum += sales[i];
+		
+		// 최고 매출 초기화
+		int max = sum;
+		
+		// 슬라이딩 윈도우
+		// 다음날 매출은 더하고 제일 첫날 매출은 빼준다
+		for(int i=k; i<sales.length; i++) {
+			sum += sales[i-k] + sales[i];
+			// 최고 매출 갱신
+			max = Math.max(max, sum);
+		}
+		return max;
+	}
+	
+	public static void main(String[] args) throws IOException{
+		// 최대 매출
+		// N일간 매출기록 중
+		// 연속된 K일 동안의 최대 매출액 구하기
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		Ex03 ex = new Ex03();
+		
+		// 매출기록 일, 연속된 날
+		st = new StringTokenizer(br.readLine(), " ");
+		int n = Integer.parseInt(st.nextToken());
+		int k = Integer.parseInt(st.nextToken());
+		
+		// 매출 배열
+		int[] sales = new int[n];
+		
+		// 매출 입력
+		st = new StringTokenizer(br.readLine(), " ");
+		for(int i=0; i<sales.length; i++) {
+			sales[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		// 출력
+		System.out.println(ex.solution(n, k, sales));
+	}
+}
+
+/*
+// 이전코드
 	public static int solution(int K, int[] sales) {
 		int answer = 0;
 		int maxSales = 0;
 		
-		/*
-		// 풀이 1 -> Time Exceed
-		for(int i=K-1; i<sales.length; i++) {
-			int sumSales = 0;
-			int nDaySales = K;
-			while(nDaySales>0) {
-				sumSales += sales[i-nDaySales+1];
-				nDaySales--;
-			}
-			if(maxSales<sumSales) maxSales = sumSales;
-		}
-		
-		answer = maxSales;
-		 */
+	
+//		// 풀이 1 -> Time Exceed
+//		for(int i=K-1; i<sales.length; i++) {
+//			int sumSales = 0;
+//			int nDaySales = K;
+//			while(nDaySales>0) {
+//				sumSales += sales[i-nDaySales+1];
+//				nDaySales--;
+//			}
+//			if(maxSales<sumSales) maxSales = sumSales;
+//		}
+//		
+//		answer = maxSales;
+
 		
 		// 풀이 2
 		int sumSales = 0;
@@ -58,4 +111,4 @@ public class Ex03 {
 		
 		System.out.println(solution(K, sales));
 	}
-}
+*/
