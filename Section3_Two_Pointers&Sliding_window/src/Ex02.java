@@ -1,50 +1,70 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Ex02 {
-	public static ArrayList<Integer> solution(int N, int M, int[] A, int[] B){
+	public ArrayList<Integer> solution(int[] a, int[] b) {
 		ArrayList<Integer> answer = new ArrayList<>();
-		int indexA = 0, indexB = 0;
 		
-		// 각 배열을 오름차순으로 정렬
-		Arrays.sort(A);
-		Arrays.sort(B);
+		// 각 배열 오름차순 정렬
+		Arrays.sort(a);
+		Arrays.sort(b);
 		
-		// 각 배열의 인덱스가 각 배열의 길이보다 작을 때
-		while(indexA<N && indexB<M) {
-			// 두 값이 서로 같으면 answer에 추가 후 각 인덱스 증가
-			if(A[indexA]==B[indexB]) {
-				answer.add(A[indexA++]);
-				indexB++;
+		// 각 배열의 인덱스
+		int p1 = 0;
+		int p2 = 0;
+		
+		while(p1<a.length && p2<b.length) {
+			if(a[p1] == b[p2]) {
+				answer.add(a[p1]);
+				p1++;
+				p2++;
+			}else {
+				if(a[p1]<b[p2]) p1++;
+				else p2++;
 			}
-			// B배열의 값이 더 크면 A배열의 인덱스 증가
-			else if(A[indexA]<B[indexB]) indexA++;
-			// A배열의 값이 더 크면 B배열의 인덱스 증가
-			else indexB++;
+		}
+		
+		return answer;		
+	}
+	
+	public static void main(String[] args) throws IOException{
+		// 공통원소 구하기
+		// A, B 두 개의 집합이 주어지면 공통 원소를 추출해 오름차순으로 출력
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		Ex02 ex = new Ex02();
+		
+		// 첫번째 배열의 크기
+		int n = Integer.parseInt(br.readLine());
+		
+		// 첫번째 배열
+		int[] a = new int[n];
+		
+		// 첫번째 배열 원소 입력
+		st = new StringTokenizer(br.readLine(), " ");
+		for(int i=0; i<a.length; i++) {
+			a[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		// 두번째 배열의 크기
+		int m = Integer.parseInt(br.readLine());
+		
+		// 두번째 배열
+		int[] b = new int[m];
+		
+		// 두번쨰 배열 원소 입력
+		st = new StringTokenizer(br.readLine(), " ");
+		for(int i=0; i<b.length; i++) {
+			b[i] = Integer.parseInt(st.nextToken());
 		}
 		
 		// 출력
-		return answer;
-	}
-	
-	public static void main(String[] args) {
-		// 공통 원소 구하기
-		// A, B 두 집합의 공통 원소를 오름차순으로 출력
-		Scanner sc = new Scanner(System.in);
-		
-		int N = sc.nextInt();
-		int[] A = new int[N];
-		for(int i=0; i<N; i++) {
-			A[i] = sc.nextInt();
-		}
-		
-		int M = sc.nextInt();
-		int[] B = new int[M];
-		for(int i=0; i<M; i++) {
-			B[i] = sc.nextInt();
-		}
-		
-		for(int answer : solution(N, M, A, B)) System.out.print(answer + " ");
+		for(int x : ex.solution(a, b)) System.out.print(x + " ");
 	}
 }
