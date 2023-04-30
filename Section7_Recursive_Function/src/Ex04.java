@@ -16,6 +16,7 @@ public class Ex04 {
 		if(fibo[n]>0) return fibo[n];
 		// fibo[n]에 들어있는 값이 0보다 크다면 해당 값은 앞에서 이미 계산을 한 값이기 때문에
 		// 재귀로 넘어가지 않고 바로 해당 값을 리턴시켜 시간을 단축시킨다.
+		// 메모리제이션 -> 이미 기록된 값을 활용해서 알고리즘의 시간을 단축시킨다
 		
 		if(n==1) return fibo[n] = 1;
 		else if(n==2) return fibo[n] = 1;
