@@ -12,7 +12,7 @@ class Node{
 public class Ex05 {
 	Node root; // Node라는 Class의 객체 주소를 저장하는 변수
 	public void DFS(Node root) {
-		if(root == null) return;
+		if(root == null) return; // 객체주소가 없음 = 말단 노드
 		else {
 			// 전위순회
 //			System.out.print(root.data + " ");
